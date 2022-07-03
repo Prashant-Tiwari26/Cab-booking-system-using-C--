@@ -1,15 +1,11 @@
 
 #include <bits/stdc++.h>
-//#include<stdlib.h>
-//#include<fstream>
-//#include<string>
 #include <conio.h>
 #include <Windows.h>
 
 using namespace std;
 int mainmenu();
 int choice;
-// bool cinfail;
 int confirmation;
 string username, password, password2;
 #define v 32     // No of Locations
@@ -17,7 +13,7 @@ float dista = 0; // Minimun Distance Of Locations
 
 class Cab;
 vector<Cab> random;
-vector<int> path; //
+vector<int> path; 
 vector<string> locations_list;
 
 class Cab
@@ -57,47 +53,6 @@ public:
 
 Cab search_cabs();
 
-// void randomize_cabs();
-
-void print_locations();
-
-void payment();
-
-string get_perfect_name(string s);
-
-void dijkstra(int edges[v][v], int source, int destination);
-
-int find_min_vertex(int distance[], bool visited[], int n);
-
-void print_solution(int distance[], int n, int parent[], int source, int destination);
-
-void print_path(int parent[], int destination);
-
-int mainmenu();
-
-Cab search_cabs()
-{
-
-    int random_index = rand() % random.size();
-    return random[random_index];
-}
-/*int randomfunc(int j)
-{
-    return rand() % j;
-}*/
-
-/*void randomize_cabs()
-{
-    srand(unsigned(time(0)));
-    random_shuffle(random.begin(),random.end(),randomfunc);
-}*/
-
-float Cab::calculate_price()
-{
-    float price = (float)dista * (this->rate);
-    return price;
-}
-
 void print_locations()
 {
     int i = 1;
@@ -110,6 +65,22 @@ void print_locations()
         i++;
     }
 }
+
+int mainmenu();
+
+Cab search_cabs()
+{
+
+    int random_index = rand() % random.size();
+    return random[random_index];
+}
+
+float Cab::calculate_price()
+{
+    float price = (float)dista * (this->rate);
+    return price;
+}
+
 
 void Cab::display_cab_info()
 {
@@ -140,7 +111,7 @@ void Cab::get_reviews()
     rating = ((rating * no_of_journeys_completed) + stars) / (no_of_journeys_completed + 1);
 }
 
-void print_path(int parent[], int destination) // function to print path between source and destination
+void print_path(int parent[], int destination) 
 {
     if (parent[destination] == -1)
     {
@@ -149,7 +120,6 @@ void print_path(int parent[], int destination) // function to print path between
     print_path(parent, parent[destination]);
 
     path.push_back(destination);
-    // cout<<destination<<" ";
 }
 void print_journey()
 {
@@ -162,8 +132,8 @@ void print_journey()
     }
 }
 
-void print_solution(float distance[], int n, int parent[], int source, int destination) // function to print distance and
-{                                                                                       // call print_path function
+void print_solution(float distance[], int n, int parent[], int source, int destination) 
+{                                                                                       
     path.clear();
     cout << "\n\nJourney" << endl;
     cout << locations_list[source] << " --> " << locations_list[destination];
@@ -195,7 +165,7 @@ int find_min_vertex(float distance[], bool visited[], int n) // function to find
     return min_vertex;
 }
 
-void dijkstra(float edges[v][v], int source, int destination) // function to implement dijkstra algorithm with some modification
+void dijkstra(float edges[v][v], int source, int destination) 
 {
     path.clear();
     int n = v;
@@ -338,26 +308,26 @@ int mainmenu()
 int main()
 {
     srand(unsigned(time(0)));
-    Cab c1("Aarav", "9874356321", "Altos", "4536", 14, 4, 67);
-    Cab c2("Aditya", "9834769721", "Mahindra", "4527", 14, 3.5, 60);
-    Cab c3("Bhagat", "9863735383", "Alto", "3652", 14, 4, 47);
-    Cab c4("Binod", "9853821437", "Honda City", "9854", 14, 4.2, 97);
-    Cab c5("Sanjay", "9845265347", "Toyota", "2541", 14, 4.1, 71);
-    Cab c6("Deepak", "9874652342", "Hyundai", "8524", 14, 4.4, 7);
-    Cab c7("Lal Bahadur", "9874356342", "Alto", "9632", 14, 3.6, 32);
-    Cab c8("Suraj", "6785456321", "Honda", "8564", 14, 3.4, 67);
-    Cab c9("Abhinav", "9654824515", "Mahindra", "4233", 14, 4.4, 27);
-    Cab c10("Salman Khan", "9874325896", "Chervolet", "1593", 14, 4, 43);
-    Cab c11("Ansh", "9624515879", "Altos", "5241", 14, 3.9, 23);
-    Cab c12("Bharat", "6854721521", "Maruti", "7531", 14, 3.5, 65);
-    Cab c13("Yash", "9874852476", "Maruti", "9999", 14, 4, 12);
-    Cab c14("Shivam", "9854751125", "suzuki", "8888", 14, 4.5, 29);
-    Cab c15("Shubham", "9854276824", "Suzuki", "7777", 14, 4, 98);
-    Cab c16("Ramesh", "8576248617", "Honda", "8426", 14, 4, 100);
-    Cab c17("Raju", "9724653819", "Hyundai", "8547", 14, 4, 23);
-    Cab c18("Piyush", "9765423845", "Tata", "6521", 14, 4, 90);
-    Cab c19("Pratik", "9754386154", "Tata", "3321", 14, 4, 32);
-    Cab c20("Karan", "9864547245", "Altos", "5252", 14, 4.2, 25);
+    Cab c1("Arnav", "9874356321", "Suzuki Wagonr", "4536", 14, 4, 67);
+    Cab c5("Sanjay", "9845261147", "Toyota Corolla", "2541", 14, 4.1, 71);
+    Cab c2("Aditya", "9834769941", "Mahindra Scorpio", "4527", 14, 3.5, 60);
+    Cab c3("Bhushan", "9863737483", "Suzuki Alto", "3652", 14, 4, 47);
+    Cab c4("Vinod", "9853821443", "Honda City", "9854", 14, 4.2, 97);
+    Cab c6("Arvind", "9874652992", "Hyundai Verna", "8524", 14, 4.4, 7);
+    Cab c7("Nalin", "9874356313", "Suzuki Alto", "9632", 14, 3.6, 32);
+    Cab c8("Suraj", "6785456344", "Honda", "8564", 14, 3.4, 67);
+    Cab c9("Abhishek", "9654864515", "Mahindra", "4233", 14, 4.4, 27);
+    Cab c10("Aslam", "9874334896", "Chervolet", "1593", 14, 4, 43);
+    Cab c11("Anshul", "9609515879", "Altos", "5241", 14, 3.9, 23);
+    Cab c13("Yashpal", "9664852476", "Suzuki Ciaz", "9999", 14, 4, 12);
+    Cab c14("Shivam", "9859371125", "Suzuki Wagonr", "8888", 14, 4.5, 29);
+    Cab c15("Shubham", "9638276824", "Suzuki Wagonr", "7777", 14, 4, 98);
+    Cab c16("Ramesh", "8579448617", "Honda City", "8426", 14, 4, 100);
+    Cab c17("Suresh", "9794953819", "Hyundai Venue", "8547", 14, 4, 23);
+    Cab c12("Bharat", "6800821521", "Maruti", "7531", 14, 3.5, 65);
+    Cab c18("Piyush", "8465423845", "Tata", "6521", 14, 4, 90);
+    Cab c19("Toyesh", "8814386154", "Tata", "3321", 14, 4, 32);
+    Cab c20("Karan", "7754547245", "Suzuki Alto", "5252", 14, 4.2, 25);
 
     random.push_back(c1);
     random.push_back(c2);
@@ -452,7 +422,6 @@ int main()
                          {0, 0, 0, 0, 0, 4.2, 0, 2.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.7},
                          {0, 0, 0, 0, 0, 0, 0, 2.7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.7, 0}};
 
-    system("color 3E");
     cout << "  \t\t\t\t\t============================================================================= ";
     cout << "\n  \t\t\t\t\t******************|C A B  B O O K I N G  S Y S T E M|************************\n";
     cout << "  \t\t\t\t\t============================================================================= " << endl;
@@ -460,7 +429,7 @@ int main()
     cout << "\n\n\t\t\t\t\t\t\tBY:-Prashant Tiwari";
     cout << "\n\t\t\t\t\t\t\t    Rajesh Chandela";
     getch();
-    while (1) // if we give wrong choice in menu its reprint menu
+    while (1) 
     {
         system("cls");
 
@@ -471,7 +440,7 @@ int main()
         cin.clear();
         cin.ignore(10000, '\n');
 
-        switch (C2) // Choice between login, register and exit
+        switch (C2) 
         {
         case 1:
             int g;
@@ -483,7 +452,7 @@ int main()
                 print_locations();
                 cin.ignore();
                 cout << endl;
-                while (1) // run until correct source doesn't enter
+                while (1) 
                 {
                     cout << "\n\tEnter the Location: ";
                     getline(cin, source_location);
@@ -501,7 +470,7 @@ int main()
                              << endl;
                 }
 
-                while (1) // run until correct destination doesn't enter
+                while (1) 
                 {
                     cout << "\n\tEnter the Destination: ";
 
@@ -532,7 +501,7 @@ int main()
                 one.display_cab_info();
                 two.display_cab_info();
                 three.display_cab_info();
-                int cc; // cab choosed
+                int cc; // cab chosen
                 while (1)
                 {
                     cout << "\n\n\tEnter which cab you want to book: ";
@@ -563,7 +532,7 @@ int main()
                             system("cls");
                             print_journey();
                             cout << "\t\t-------------------------------------------";
-                            cout << "\n\n\t\t YOU REACHED....";
+                            cout << "\n\n\t\t YOU HAVE REACHED YOUR DESTINATION....";
                             getch();
                             system("cls");
                             cout << "\n\n\n\t\t\tPress any key";
